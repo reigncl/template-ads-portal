@@ -25,7 +25,8 @@
     "@angular/platform-browser": "~11.0.9",
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
-    "contentful": "^8.1.7",
+    "contentful": "^7.14.6",
+    "atomic": "git+https://1f1d4d698c43bd14714f3192b3c68396a1926038:x-oauth-basic@github.com/reigncl/template-ads-library-dist.git#v1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

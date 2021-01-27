@@ -5,18 +5,11 @@ import { PageComponent } from './page.component';
 import { PageRoutingModule } from './page-routing.module';
 import { TemplatesComponent } from './templates/templates.component';
 
-import { AtomsModule, MoleculesModule, OrganismsModule, TemplatesModule } from 'atomic';
+import { AtomsModule } from 'atomic';
 
 @NgModule({
   declarations: [PageComponent, TemplatesComponent],
-  imports: [
-    CommonModule,
-    PageRoutingModule,
-    AtomsModule,
-    MoleculesModule,
-    OrganismsModule,
-    TemplatesModule,
-  ],
+  imports: [CommonModule, PageRoutingModule, AtomsModule],
   providers: [],
 })
 export class PageModule {}

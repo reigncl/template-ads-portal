@@ -6,6 +6,12 @@ import { IEnvironment } from 'src/app/interfaces/IEnvironment';
 
 export const environment: IEnvironment = {
   production: false,
+  contentful: {
+    space: 'v2fzqi8oenbe',
+    accessToken: 'MsLnFraDjRT1BIdoYLAsNAU8Db4HGcrMPYjFyJNeyr4',
+    host: 'cdn.contentful.com',
+    environment: 'master',
+  },
 };
 
 /*

@@ -1,5 +1,6 @@
 export interface IContentfulConfig {
-  ENVIRONMENT_ID: string;
-  SPACE_ID: string;
-  TOKEN: string;
+  environment: string;
+  space: string;
+  accessToken: string;
+  host: string;
 }
