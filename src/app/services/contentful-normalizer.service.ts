@@ -91,6 +91,7 @@ export class ContentfulNormalizerService {
 
   normalizeDefault(newBlockInProp: any, contentTypeId: string): any {
     const newBlockIn = { contentTypeId, contentType: contentTypeId, ...newBlockInProp };
+
     for (const option of DefaultNormalizerSet.keys()) {
       if (option in newBlockIn && newBlockIn[option].fields) {
         const contentType = newBlockIn[option].sys.contentType.sys.id;
@@ -114,7 +115,6 @@ export class ContentfulNormalizerService {
         );
       }
     }
-
     return newBlockIn;
   }
 

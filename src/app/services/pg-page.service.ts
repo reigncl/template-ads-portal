@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { PgPage } from '../interfaces/pg-page';
 
 import { Entry } from 'contentful';
+import { ContentfulNormalizerService } from './contentful-normalizer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class PgPageService {
 
   constructor(
     private contentfulService: ContentfulService,
-    // private normalizerService: ContentfulNormalizerService,
+    private normalizerService: ContentfulNormalizerService,
     private router: Router
   ) {}
 

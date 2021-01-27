@@ -11,6 +11,9 @@
       </ng-container>
       <ng-template #noTemplates>
         <ng-container *ngFor="let block of page.blocks" [ngSwitch]="block?.contentTypeId">
+          <ng-container *ngSwitchCase="ContentType.AT_BUTTON">
+            <lib-at-button [options]='block'></lib-at-button>
+          </ng-container>
         </ng-container>
       </ng-template>
     </main>

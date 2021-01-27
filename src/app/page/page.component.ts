@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ContentType, ContentTypeTemplate } from '../enums/ContentType.enum';
+import { ContentType } from '../enums/ContentType.enum';
 import { environment } from 'src/environments/environment';
 import { MetaServiceService } from '../services/meta-service.service';
 import { PgPage } from '../interfaces/pg-page';
@@ -15,7 +15,7 @@ export class PageComponent implements OnInit {
   appVersion = environment.appVersion;
 
   ContentType = ContentType;
-  ContentTypeTemplate = ContentTypeTemplate;
+  // ContentTypeTemplate = ContentTypeTemplate;
   page: PgPage;
   slugRequest = '';
 
@@ -26,7 +26,7 @@ export class PageComponent implements OnInit {
     private metaService: MetaServiceService,
     private pgPageService: PgPageService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {

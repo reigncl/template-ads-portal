@@ -3,7 +3,6 @@
 import { Component, Input } from '@angular/core';
 
 import { Block } from '../../interfaces/pg-page';
-import { ContentTypeTemplate } from '../../enums/ContentType.enum';
 import { environment } from 'src/environments/environment';
 
 @Component({
