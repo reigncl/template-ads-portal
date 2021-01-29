@@ -27,7 +27,8 @@
     "@angular/router": "~11.0.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "atomic": "git+https://8e1eb16b9824bce495b4722b19caa1e9b14b1ef3:x-oauth-basic@github.com/reigncl/template-ads-library-dist.git#v1.2.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.7",
