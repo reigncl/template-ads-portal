@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  height: 100%;
+}
+
+.container-loader {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-large {
+  animation: spin 0.5s infinite linear;
+  border: 3px solid rgba(0, 55, 125, 0.1);
+  border-top: 3px solid #00c8ff;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 5em;
+  width: 5em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
