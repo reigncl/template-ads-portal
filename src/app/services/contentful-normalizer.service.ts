@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 import { AssetNormalizerSet } from '../sets/asset-normalizer.set';
 import { DefaultNormalizerSet, MapNormalizerSet } from '../sets/default-normalizer.set';
 import { DocumentRichText } from '../interfaces/document-rich-text.interface';
-import { PgPage, Block } from '../interfaces/pg-page';
+import { Block, PgPage } from '../interfaces/pg-page';
 
-import { Entry, Asset } from 'contentful';
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { Asset, Entry } from 'contentful';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 @Injectable({
   providedIn: 'root',
@@ -73,7 +73,7 @@ export class ContentfulNormalizerService {
    * Normalize Contentful Block
    * @param contentfulBlock The contentful block
    */
-  normalizeBlock(contentfulBlock: Entry<any>) {
+  normalizeBlock(contentfulBlock: Entry<any>): Block {
     if (contentfulBlock && contentfulBlock.sys && contentfulBlock.sys.contentType) {
       const { id, contentType } = contentfulBlock.sys;
       const contentTypeId = contentType.sys.id;
@@ -115,6 +115,12 @@ export class ContentfulNormalizerService {
         );
       }
     }
+
+    // RICH TEXT
+    if (newBlockIn.richText) {
+      newBlockIn.richText = this.normalizeRichText(newBlockIn.richText, contentTypeId);
+    }
+
     return newBlockIn;
   }
 
@@ -137,8 +143,8 @@ export class ContentfulNormalizerService {
     return contentfulAsset;
   }
 
-  // normalizeRichText(documentAsset: DocumentRichText, contentType: string): string {
-  //   const docString = documentToHtmlString(documentAsset as any);
-  //   return docString;
-  // }
+  normalizeRichText(documentAsset: DocumentRichText, contentType: string): string {
+    const docString = documentToHtmlString(documentAsset as any);
+    return docString;
+  }
 }
