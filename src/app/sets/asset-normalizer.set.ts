@@ -1,1 +1,1 @@
-export const AssetNormalizerSet = new Set<string>(['icon']);
+export const AssetNormalizerSet = new Set<string>(['icon', 'image']);
