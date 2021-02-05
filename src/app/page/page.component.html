@@ -4,20 +4,27 @@
 
 <div class="app-wrap" *ngIf="page" attr.app-version="{{ appVersion }}">
   <div class="app-container">
-    <header *ngIf="page && page.header && page.header.contentTypeId === ContentType.OR_HEADER">
-    </header>
+    <header
+      *ngIf="page && page.header && page.header.contentTypeId === ContentType.OR_HEADER"
+    ></header>
     <main *ngIf="page" class="main">
-      <ng-container *ngIf="page.template; else noTemplates">
-      </ng-container>
+      <ng-container *ngIf="page.template; else noTemplates"> </ng-container>
       <ng-template #noTemplates>
         <ng-container *ngFor="let block of page.blocks" [ngSwitch]="block?.contentTypeId">
           <ng-container *ngSwitchCase="ContentType.AT_BUTTON">
-            <lib-at-button [options]='block'></lib-at-button>
+            <at-button [options]="block"></at-button>
+          </ng-container>
+          <ng-container *ngSwitchCase="ContentType.ML_HEADING">
+            <ml-heading [options]="block"></ml-heading>
+          </ng-container>
+          <ng-container *ngSwitchCase="ContentType.ML_RICH_TEXT">
+            <ml-rich-text [options]="block"></ml-rich-text>
           </ng-container>
         </ng-container>
       </ng-template>
     </main>
-    <footer *ngIf="page && page.footer && page.footer.contentTypeId === ContentType.OR_FOOTER">
-    </footer>
+    <footer
+      *ngIf="page && page.footer && page.footer.contentTypeId === ContentType.OR_FOOTER"
+    ></footer>
   </div>
 </div>
