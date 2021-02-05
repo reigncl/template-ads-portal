@@ -1,6 +1,7 @@
 export enum ContentType {
   PG_PAGE = 'pg-page',
   AT_BUTTON = 'at-button',
+  AT_IMAGE = 'at-image',
   ML_RICH_TEXT = 'ml-rich-text',
   ML_HEADING = 'ml-heading',
   OR_FOOTER = 'or-footer',

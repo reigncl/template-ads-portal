@@ -79,7 +79,7 @@ export class ContentfulNormalizerService {
       const contentTypeId = contentType.sys.id;
       const { fields } = contentfulBlock;
       const block = this.normalizeDefault(fields, contentTypeId);
-
+      console.log(block);
       return {
         id,
         contentTypeId,
