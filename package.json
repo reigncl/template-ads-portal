@@ -26,7 +26,7 @@
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
     "@contentful/rich-text-html-renderer": "^14.1.2",
-    "atomic": "git+https://8dc6e9397ea24b269d14c4a81b859cfb625dc806:x-oauth-basic@github.com/reigncl/template-ads-library-dist.git#v1.3.1",
+    "atomic": "git+https://879b4cfdf91ec2a64ddaa2620bb14f659130d0e9:x-oauth-basic@github.com/reigncl/template-ads-library-dist.git#v1.3.1",
     "atomic-framework": "git+https://gitlab+deploy-token-217427:xHGQD_ng6hJny13Myiyc@gitlab.com/bupa-seguros/bads-atomic-framework.git#v0.0.39",
     "contentful": "^7.14.6",
     "rxjs": "~6.6.0",
