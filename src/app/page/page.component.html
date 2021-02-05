@@ -20,6 +20,9 @@
           <ng-container *ngSwitchCase="ContentType.ML_RICH_TEXT">
             <ml-rich-text [options]="block"></ml-rich-text>
           </ng-container>
+          <ng-container *ngSwitchCase="ContentType.AT_IFRAME">
+            <at-iframe [options]='block'></at-iframe>
+          </ng-container>
         </ng-container>
       </ng-template>
     </main>
