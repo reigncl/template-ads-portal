@@ -11,8 +11,8 @@
       </ng-container>
       <ng-template #noTemplates>
         <ng-container *ngFor="let block of page.blocks" [ngSwitch]="block?.contentTypeId">
-          <ng-container *ngSwitchCase="ContentType.AT_BUTTON">
-            <lib-at-button [options]='block'></lib-at-button>
+          <ng-container *ngSwitchCase="ContentType.ML_RICH_TEXT">
+            <ml-rich-text [options]="block"></ml-rich-text>
           </ng-container>
         </ng-container>
       </ng-template>

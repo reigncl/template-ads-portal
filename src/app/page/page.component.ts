@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ContentType } from '../enums/ContentType.enum';
@@ -6,12 +6,13 @@ import { environment } from 'src/environments/environment';
 import { MetaServiceService } from '../services/meta-service.service';
 import { PgPage } from '../interfaces/pg-page';
 import { PgPageService } from '../services/pg-page.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
 })
-export class PageComponent implements OnInit {
+export class PageComponent implements OnInit, OnDestroy {
   appVersion = environment.appVersion;
 
   ContentType = ContentType;
@@ -21,6 +22,8 @@ export class PageComponent implements OnInit {
 
   isHeadless = false;
   isMobile = false;
+
+  routeParamsSub: Subscription;
 
   constructor(
     private metaService: MetaServiceService,
@@ -36,7 +39,11 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
     this.configPage();
-    this.subscribeToPage();
+    this.routeParamsSub = this.subscribeToPage();
+  }
+
+  ngOnDestroy(): void {
+    this.routeParamsSub.unsubscribe();
   }
 
   configPage(): void {
@@ -44,8 +51,8 @@ export class PageComponent implements OnInit {
     this.isMobile = width < 1200;
   }
 
-  subscribeToPage(): void {
-    this.route.params.subscribe((params) => {
+  subscribeToPage(): Subscription {
+    return this.route.params.subscribe((params) => {
       if (!!this.route.snapshot.queryParamMap.get('headless')) {
         this.isHeadless = true;
       }
@@ -65,6 +72,7 @@ export class PageComponent implements OnInit {
   async requestPage(slug: string = environment.slugHome): Promise<void> {
     try {
       this.page = await this.pgPageService.getPageBySlug(slug);
+      console.log(this.page);
       if (this.page) {
         this.setupMetas();
       }

@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ContentType } from '../enums/ContentType.enum';
-// import { ContentfulNormalizerService } from './contentful-normalizer.service';
 import { ContentfulService } from './contentful.service';
+import { ContentfulNormalizerService } from './contentful-normalizer.service';
 import { environment } from 'src/environments/environment';
 import { PgPage } from '../interfaces/pg-page';
 
 import { Entry } from 'contentful';
-import { ContentfulNormalizerService } from './contentful-normalizer.service';
 
 @Injectable({
   providedIn: 'root',

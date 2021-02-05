@@ -23,4 +23,5 @@ export interface Block {
   contentType: string;
   fields?: any[];
   modalId?: string;
+  richText?: any;
 }

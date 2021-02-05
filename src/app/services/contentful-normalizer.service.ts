@@ -8,7 +8,7 @@ import { DocumentRichText } from '../interfaces/document-rich-text.interface';
 import { PgPage, Block } from '../interfaces/pg-page';
 
 import { Entry, Asset } from 'contentful';
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,7 @@ export class ContentfulNormalizerService {
     if (!contentfulPage) {
       return;
     }
+
     const {
       id,
       contentType,
@@ -31,6 +32,7 @@ export class ContentfulNormalizerService {
         sys: { id: contentTypeId },
       },
     } = contentfulPage.sys;
+
     const {
       title,
       description,
@@ -46,6 +48,7 @@ export class ContentfulNormalizerService {
       preventIndexing,
       pageCaching,
     } = contentfulPage.fields;
+
     return {
       id,
       contentTypeId,
@@ -92,6 +95,9 @@ export class ContentfulNormalizerService {
   normalizeDefault(newBlockInProp: any, contentTypeId: string): any {
     const newBlockIn = { contentTypeId, contentType: contentTypeId, ...newBlockInProp };
 
+    if (!!newBlockIn.richText) {
+      newBlockIn.richText = this.normalizeRichText(newBlockIn.richText);
+    }
     for (const option of DefaultNormalizerSet.keys()) {
       if (option in newBlockIn && newBlockIn[option].fields) {
         const contentType = newBlockIn[option].sys.contentType.sys.id;
@@ -103,6 +109,7 @@ export class ContentfulNormalizerService {
         newBlockIn[asset] = this.normalizeAsset(newBlockIn[asset]);
       }
     }
+
     for (const option of MapNormalizerSet.keys()) {
       if (
         option in newBlockIn &&
@@ -137,8 +144,8 @@ export class ContentfulNormalizerService {
     return contentfulAsset;
   }
 
-  // normalizeRichText(documentAsset: DocumentRichText, contentType: string): string {
-  //   const docString = documentToHtmlString(documentAsset as any);
-  //   return docString;
-  // }
+  normalizeRichText(documentAsset: DocumentRichText): string {
+    const docString = documentToHtmlString(documentAsset as any);
+    return docString;
+  }
 }
