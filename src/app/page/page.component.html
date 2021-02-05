@@ -14,6 +14,9 @@
           <ng-container *ngSwitchCase="ContentType.AT_BUTTON">
             <at-button [options]="block"></at-button>
           </ng-container>
+          <ng-container *ngSwitchCase="ContentType.AT_IMAGE">
+            <at-image [options]="block"></at-image>
+          </ng-container>
           <ng-container *ngSwitchCase="ContentType.ML_HEADING">
             <ml-heading [options]="block"></ml-heading>
           </ng-container>
